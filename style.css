@@ -1,7 +1,7 @@
 /* Style the logo image */
 body {
   margin: 0;
-  
+
   padding: 0;
 }
 
@@ -59,6 +59,9 @@ body {
   /* On large screens, enable horizontal scrolling */
   overflow-x: auto;
   overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 20px;
+  -webkit-overflow-scrolling: touch; /* smooth iOS scrolling */
 }
 
 .cards {
@@ -72,6 +75,7 @@ body {
   flex-shrink: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease, max-height 0.35s ease;
+  scroll-snap-align: start;
 }
 
 .cards:hover {
@@ -146,6 +150,10 @@ p.direction {
 
 /* Responsive Design - Small Screens (mobile) */
 @media (max-width: 768px) {
+  .timeline {
+    scroll-snap-type: x mandatory;
+  }
+
   .cards {
     display: flex !important;
     flex-direction: column;
@@ -174,6 +182,10 @@ p.direction {
 
 /* Responsive Design - Extra Small Screens */
 @media (max-width: 480px) {
+  .timeline {
+    scroll-snap-type: x mandatory;
+  }
+  
   .cards {
     display: flex !important;
     flex-direction: column;
