@@ -1,1 +1,87 @@
-/* Add your CSS here */
+/* Style the logo image */
+.hero div {
+  text-align: center;
+
+  margin-top: 0px;
+
+  margin-bottom: 0px;
+
+  background-color: #0071C5; /* Intel Blue */
+
+  padding: 40px 20px; /* Top/bottom and left/right */
+
+  outline: none;
+
+  border: none;
+}
+
+.hero img {
+  align-items: center;
+
+  display: block;
+
+  margin: 0 auto;
+
+  width: 25%; 
+}
+
+.hero h1 {
+  font-size: 2.5em;
+
+  font-weight: bold;
+
+  margin: 20px 0;
+
+  color: white;
+}
+
+.hero p {
+  margin-top: 15px;
+
+  font-size: 1.2em;
+
+  color: white;
+}
+
+/* Timeline Section */
+.timeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px 20px;
+  justify-content: center;
+}
+
+/* Timeline Cards */
+.cards {
+  border: 2px solid #0071C5;
+  border-radius: 8px;
+  padding: 20px;
+  width: 200px;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.cards:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cards h2 {
+  color: #0071C5;
+  font-size: 1.8em;
+  margin: 0 0 10px 0;
+}
+
+.cards h3 {
+  color: #333;
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+.cards p {
+  color: #666;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
