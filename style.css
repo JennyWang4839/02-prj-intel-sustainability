@@ -46,42 +46,143 @@
 /* Timeline Section */
 .timeline {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 20px;
   padding: 40px 20px;
-  justify-content: center;
+  justify-content: flex-start;
+  /* On large screens, enable horizontal scrolling */
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
-/* Timeline Cards */
 .cards {
+  background-color: #f5f5f5;
   border: 2px solid #0071C5;
   border-radius: 8px;
   padding: 20px;
   width: 200px;
-  background-color: #f5f5f5;
+  max-height: 260px; /* base visible area */
+  overflow: hidden;
+  flex-shrink: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, max-height 0.35s ease;
 }
 
 .cards:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-height: 900px; /* allow full description to show */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  z-index: 2;
 }
 
-.cards h2 {
+/* Unify card image size */
+.cards img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.cardInfo h2 {
   color: #0071C5;
   font-size: 1.8em;
   margin: 0 0 10px 0;
 }
 
-.cards h3 {
+.cardInfo h3 {
   color: #333;
   font-size: 1.1em;
   margin: 10px 0;
 }
 
-.cards p {
-  color: #666;
-  font-size: 0.95em;
-  line-height: 1.5;
+.cards {
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  overflow: hidden;
+}
+
+p.cardInfo {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.cards:hover p.cardInfo {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+p.direction {
+  text-align: center;
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Responsive Design - Medium Screens (tablets) */
+@media (max-width: 1024px) {
+  .timeline {
+    /* On medium screens, allow wrapping but keep horizontal scrolling as option */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cards {
+    width: 180px;
+  }
+}
+
+/* Responsive Design - Small Screens (mobile) */
+@media (max-width: 768px) {
+  .timeline {
+    /* Stack cards vertically on small screens */
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  .cards {
+    display: flex;           /* switch off grid */
+    flex-direction: column; /* natural stacking */
+    height: auto;
+  }
+
+  p.cardInfo {
+    opacity: 1;
+    transform: none;
+    margin-top: 12px;
+  }
+}
+
+/* Responsive Design - Extra Small Screens */
+@media (max-width: 480px) {
+  .timeline {
+    padding: 20px 10px;
+  }
+
+  h2.cardInfo {
+    font-size: 1.5em;
+  }
+
+  h3.cardInfo {
+    font-size: 1em;
+  }
+
+  .cards {
+    display: flex;           /* switch off grid */
+    flex-direction: column; /* natural stacking */
+    height: auto;
+  }
+
+  p.cardInfo {
+    opacity: 1;
+    transform: none;
+    margin-top: 12px;
+  }
 }
